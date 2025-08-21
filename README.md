@@ -5,6 +5,12 @@ It allows users to register, log in, create posts, like, and comment—simulatin
 
 ---
 
+## 🌐 Live Demo
+
+[https://minilinkedin-six.vercel.app/](https://minilinkedin-six.vercel.app/)
+
+---
+
 ## 🚀 Tech Stack
 
 - **Frontend**: React.js, TailwindCSS (if used)  
