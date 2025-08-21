@@ -17,7 +17,7 @@ export default function Sidebar() {
     const token = localStorage.getItem("token")
     if (token) {
       axios
-        .get("http://localhost:5000/api/users/profile", {
+        .get("https://mini-linkedin-1-45fv.onrender.com/api/users/profile", {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((res) => setUser(res.data.user))

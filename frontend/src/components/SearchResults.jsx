@@ -9,7 +9,7 @@ export default function SearchResults() {
 
   useEffect(() => {
     setLoading(true)
-    axios.get(`http://localhost:5000/api/users/search?q=${encodeURIComponent(query)}`)
+    axios.get(`https://mini-linkedin-1-45fv.onrender.com/api/users/search?q=${encodeURIComponent(query)}`)
       .then(res => {
         setResults(res.data.users || [])
         setLoading(false)

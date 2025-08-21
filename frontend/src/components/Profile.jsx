@@ -33,8 +33,8 @@ export default function Profile() {
 
     const apiUrl =
       !userId && currentUser && token
-        ? `http://localhost:5000/api/users/profile`
-        : `http://localhost:5000/api/users/${userId || (currentUser ? currentUser.id : "")}`
+        ? `https://mini-linkedin-1-45fv.onrender.com/api/users/profile`
+        : `https://mini-linkedin-1-45fv.onrender.com/api/users/${userId || (currentUser ? currentUser.id : "")}`
 
     axios
       .get(
@@ -77,7 +77,7 @@ export default function Profile() {
 
       const updateData = { [section]: data }
 
-      const response = await axios.put(`http://localhost:5000/api/users/profile`, updateData, {
+      const response = await axios.put(`https://mini-linkedin-1-45fv.onrender.com/api/users/profile`, updateData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

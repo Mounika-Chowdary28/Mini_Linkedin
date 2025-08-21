@@ -17,7 +17,7 @@ export default function CreatePost({ onPost }) {
     setIsPosting(true)
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/posts",
+        "https://mini-linkedin-1-45fv.onrender.com/api/posts",
         { content },
         {
           headers: { Authorization: `Bearer ${token}` },

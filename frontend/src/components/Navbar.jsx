@@ -21,7 +21,7 @@ export default function Navbar() {
     }
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/users/search?q=${encodeURIComponent(search.trim())}`
+        `https://mini-linkedin-1-45fv.onrender.com/api/users/search?q=${encodeURIComponent(search.trim())}`
       )
       setResults(res.data.users || [])
       setShowResults(true)

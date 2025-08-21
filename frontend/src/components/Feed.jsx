@@ -20,7 +20,7 @@ export default function Feed() {
   useEffect(() => {
     setLoading(true)
     axios
-      .get("http://localhost:5000/api/posts")
+      .get("https://mini-linkedin-1-45fv.onrender.com/api/posts")
       .then((res) => {
         setPosts(res.data)
         setLoading(false)
@@ -40,7 +40,7 @@ export default function Feed() {
       await Promise.all(
         posts.map(async (post) => {
           try {
-            const response = await axios.get(`http://localhost:5000/api/likes/${post._id}/status`, {
+            const response = await axios.get(`https://mini-linkedin-1-45fv.onrender.com/api/likes/${post._id}/status`, {
               headers: { Authorization: `Bearer ${token}` },
             })
             likeStatuses[post._id] = response.data.liked
@@ -63,7 +63,7 @@ export default function Feed() {
 
     try {
       const response = await axios.post(
-        `http://localhost:5000/api/likes/${postId}`,
+        `https://mini-linkedin-1-45fv.onrender.com/api/likes/${postId}`,
         {},
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -110,7 +110,7 @@ export default function Feed() {
     if (isExpanding && !comments[postId]) {
       setLoadingComments((prev) => ({ ...prev, [postId]: true }))
       try {
-        const response = await axios.get(`http://localhost:5000/api/comments/post/${postId}`)
+        const response = await axios.get(`https://mini-linkedin-1-45fv.onrender.com/api/comments/post/${postId}`)
         setComments((prev) => ({ ...prev, [postId]: response.data }))
       } catch (error) {
         console.error("Error fetching comments:", error)
@@ -135,7 +135,7 @@ export default function Feed() {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/comments",
+        "https://mini-linkedin-1-45fv.onrender.com/api/comments",
         {
           content: commentText.trim(),
           postId: postId,

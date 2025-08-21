@@ -13,7 +13,7 @@ export default function Register() {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/auth/register', { name, email, bio, password });
+      await axios.post('https://mini-linkedin-1-45fv.onrender.com/api/auth/register', { name, email, bio, password });
       navigate('/login');
     } catch (e) {
       setErr(e.response?.data?.message || 'Registration failed');
