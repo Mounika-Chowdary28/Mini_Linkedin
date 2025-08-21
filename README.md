@@ -48,9 +48,9 @@ Frontend will run on **http://localhost:3000**
 ---
 
 ## 👤 Admin / Demo User
-Currently, there are **no default admin/demo users**.  
-- You can create your own account by registering on the frontend.  
-- Use those credentials to log in.  
+
+  # Email: david@example.com
+  # Password: 123456
 
 ---
 
