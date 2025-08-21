@@ -28,7 +28,13 @@ export default function Profile() {
     const currentUser = JSON.parse(localStorage.getItem("user"))
     const token = localStorage.getItem("token")
 
-    const isOwn = currentUser && token && !userId
+    // Fix: Check if the profile being viewed is the current user's
+    let isOwn = false
+    if (currentUser && token) {
+      if (!userId || userId === currentUser.id || userId === currentUser._id) {
+        isOwn = true
+      }
+    }
     setIsOwnProfile(isOwn)
 
     const apiUrl =
