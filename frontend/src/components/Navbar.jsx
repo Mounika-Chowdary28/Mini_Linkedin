@@ -10,6 +10,7 @@ export default function Navbar() {
   const [search, setSearch] = useState("")
   const [results, setResults] = useState([])
   const [showResults, setShowResults] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
   const resultsRef = useRef(null)
 
   async function handleSearch(e) {
@@ -31,7 +32,6 @@ export default function Navbar() {
     }
   }
 
-  // Hide results when clicking outside
   function handleBlur(e) {
     setTimeout(() => setShowResults(false), 100)
   }
@@ -52,7 +52,6 @@ export default function Navbar() {
                 <span className="text-white font-bold text-sm">in</span>
               </div>
             </Link>
-
             {user && (
               <form onSubmit={handleSearch} className="flex items-center ml-4 relative">
                 <input
@@ -95,40 +94,40 @@ export default function Navbar() {
             )}
           </div>
 
-          {/* Right section - Navigation */}
-          <div className="flex items-center space-x-6">
+          {/* Hamburger for mobile */}
+          <button
+            className="sm:hidden ml-4 p-2 rounded focus:outline-none"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d={menuOpen
+                  ? "M6 18L18 6M6 6l12 12" // X Close
+                  : "M4 6h16M4 12h16M4 18h16" // Hamburger
+                }
+              />
+            </svg>
+          </button>
+
+          {/* Right section - Navigation (Hidden on mobile, shown on sm+) */}
+          <div className="hidden sm:flex items-center space-x-6">
             {user ? (
               <>
-                <Link
-                  to="/"
+                <Link to="/"
                   className="flex flex-col items-center space-y-1 text-gray-600 hover:text-gray-900 transition-colors"
                 >
-                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                    />
-                  </svg>
+                  {/* ... SVG ... */}
                   <span className="text-xs hidden sm:block">Home</span>
                 </Link>
-
-                <Link
-                  to={`/profile/${user._id}`}
+                <Link to={`/profile/${user._id}`}
                   className="flex flex-col items-center space-y-1 text-gray-600 hover:text-gray-900 transition-colors"
                 >
-                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                    />
-                  </svg>
+                  {/* ... SVG ... */}
                   <span className="text-xs hidden sm:block">Me</span>
                 </Link>
-
                 <div className="relative">
                   <button
                     onClick={handleLogout}
@@ -158,6 +157,41 @@ export default function Navbar() {
             )}
           </div>
         </div>
+        {/* Mobile menu, shown when hamburger clicked */}
+        {menuOpen && (
+          <div className="sm:hidden mt-2 bg-white border-t border-gray-100 shadow p-4 rounded-lg absolute right-4 left-4 z-40">
+            <div className="flex flex-col space-y-4">
+              {user ? (
+                <>
+                  <Link to="/" className="text-gray-700 font-medium" onClick={() => setMenuOpen(false)}>
+                    Home
+                  </Link>
+                  <Link to={`/profile/${user._id}`} className="text-gray-700 font-medium" onClick={() => setMenuOpen(false)}>
+                    Me
+                  </Link>
+                  <button
+                    onClick={() => {
+                      handleLogout()
+                      setMenuOpen(false)
+                    }}
+                    className="text-gray-700 font-medium text-left"
+                  >
+                    Sign Out
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link to="/login" className="text-gray-700 font-medium" onClick={() => setMenuOpen(false)}>
+                    Sign in
+                  </Link>
+                  <Link to="/register" className="text-blue-700 border border-blue-600 rounded px-3 py-1" onClick={() => setMenuOpen(false)}>
+                    Join now
+                  </Link>
+                </>
+              )}
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   )
