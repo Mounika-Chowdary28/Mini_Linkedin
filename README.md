@@ -49,8 +49,8 @@ Frontend will run on **http://localhost:3000**
 
 ## 👤 Admin / Demo User
 
-  # Email: david@example.com
-  # Password: 123456
+  #### Email: david@example.com
+  #### Password: 123456
 
 ---
 
