@@ -1,0 +1,114 @@
+@import "tailwindcss";
+/* Updated to LinkedIn-style color scheme and typography */
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  /* LinkedIn color palette */
+  --linkedin-blue: #0a66c2;
+  --linkedin-blue-hover: #004182;
+  --linkedin-light-blue: #70b5f9;
+  --linkedin-gray-100: #f3f2ef;
+  --linkedin-gray-200: #e9e5df;
+  --linkedin-gray-300: #d4d2ce;
+  --linkedin-gray-600: #666666;
+  --linkedin-gray-900: #000000;
+  --linkedin-white: #ffffff;
+
+  color: var(--linkedin-gray-900);
+  background-color: var(--linkedin-gray-100);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: var(--linkedin-gray-100);
+}
+
+a {
+  font-weight: 500;
+  color: var(--linkedin-blue);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--linkedin-blue-hover);
+  text-decoration: underline;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--linkedin-gray-900);
+  font-weight: 600;
+  margin: 0;
+}
+
+button {
+  border-radius: 24px;
+  border: 1px solid var(--linkedin-blue);
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  background-color: var(--linkedin-blue);
+  color: var(--linkedin-white);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  background-color: var(--linkedin-blue-hover);
+  border-color: var(--linkedin-blue-hover);
+}
+
+button.secondary {
+  background-color: transparent;
+  color: var(--linkedin-blue);
+  border: 1px solid var(--linkedin-blue);
+}
+
+button.secondary:hover {
+  background-color: var(--linkedin-light-blue);
+  background-color: rgba(112, 181, 249, 0.1);
+}
+
+/* LinkedIn-style card component */
+.linkedin-card {
+  background: var(--linkedin-white);
+  border: 1px solid var(--linkedin-gray-300);
+  border-radius: 8px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 0 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--linkedin-gray-200);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--linkedin-gray-600);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--linkedin-gray-900);
+}
